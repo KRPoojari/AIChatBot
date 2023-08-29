@@ -12,10 +12,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EntityScan(basePackages = "com.rest")
 @ComponentScan(basePackages = "com.rest")
-public class PostmanApplication {
+public class AIChatBotApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PostmanApplication.class, args);
+		SpringApplication.run(AIChatBotApplication.class, args);
 	}
 
 }
