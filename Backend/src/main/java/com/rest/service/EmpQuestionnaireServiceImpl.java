@@ -12,6 +12,7 @@ import com.rest.repository.EmpQuestionnaireRepository;
 import com.rest.repository.EmployeeRepository;
 import com.rest.responseModel.QuestionnairePersonalResponse;
 
+
 import java.util.*;
 
 @Service
@@ -31,6 +32,7 @@ public class EmpQuestionnaireServiceImpl implements EmpQuestionnaireService {
         QuestionnairePersonalResponse questionnairePersonalResponse = new QuestionnairePersonalResponse();
 
         System.out.println(empId);
+        
         EmployeeEntity employeeEntity = employeeRepository.searchByEmpId(empId);
         System.out.println(employeeEntity);
         if (employeeEntity == null) {
@@ -38,10 +40,19 @@ public class EmpQuestionnaireServiceImpl implements EmpQuestionnaireService {
             return questionnairePersonalResponse;
         }
 
-        String res = questionToAnswer(question, employeeEntity);
+       String res = questionToAnswer(question, employeeEntity);
         questionnairePersonalResponse.setAnswer(res);
         return questionnairePersonalResponse;
     }
+  /*  public String getManagerName(String empId) {
+        EmployeeEntity employee = employeeRepository.searchByEmpId(empId);
+        if (employee != null) {
+            return "Your manager is " + employee.getManagerName();
+        } else {
+            return "Employee not found. Please check the Employee Id.";
+        }
+    }*/
+
 
 
     private String questionToAnswer(String question, EmployeeEntity employeeEntity){
@@ -52,31 +63,42 @@ public class EmpQuestionnaireServiceImpl implements EmpQuestionnaireService {
         String kw = "";
         List<String> rwList = new ArrayList<>(),uList = new ArrayList<>();
         String res = "";
+        int count=0;
+        System.out.println("Question: " + question);
+        boolean keywordFound = false;
         for (String str : cleanedWords) {
             System.out.println(str + "- > " + obj.stemWord(str));
             rwList.add(obj.stemWord(str));
-            kw = questionnaireRepository.searchByRootWord(obj.stemWord(str));
-            System.out.println("Keyword:" + kw);
-            int count=0;
-            if (kw == null ) {
+             kw = questionnaireRepository.findKeywordByQuestion(question);
+            //kw = questionnaireRepository.searchByRootWord(obj.stemWord(str));
+           // kw = questionnaireRepository.searchByRootWord(obj.stemWord(str).toLowerCase());
+            System.out.println("Keyword is :" + kw);
+           // int count=0;
+           if (kw == null ) {
                 count+=1;
                 if(count == cleanedWords.size()){
                     //questionnairePersonalResponse.setAnswer("Keyword not found in the entered question");
                     res+="Please re-check the entered question";
                 }
+                count+=1;
                 //throw new APIFailureException("Keyword not found in the entered question");
                 continue;
             }
+           else {
+        	   count = 0;
+               keywordFound = true;
+
             if ( uList.contains(kw)) {
                 continue;
             }
+          
             uList.add(kw);
             switch (kw) {
                 case "manager":
-                    res += "You Manager name is " + employeeEntity.getManagerName() + " ";
+                    res += "Your Manager name is " + employeeEntity.getManagerName() + " ";
                     break;
                 case "chapter_name":
-                    res += "You Chapter name is " + employeeEntity.getChapterName() + " ";
+                    res += "Your Chapter name is " + employeeEntity.getChapterName() + " ";
                     break;
                 case "nwa_code":
                     res += "Use this NWA Code in your time sheets: " + employeeEntity.getNwaCode() + " ";
@@ -93,8 +115,9 @@ public class EmpQuestionnaireServiceImpl implements EmpQuestionnaireService {
                 case "default":
             }
         }
+        }
         System.out.println("res"+res);
-        if(res== ""){
+        if(res.isEmpty()){
             res+=" The answer for the required message is not found";
         }
         return res;
