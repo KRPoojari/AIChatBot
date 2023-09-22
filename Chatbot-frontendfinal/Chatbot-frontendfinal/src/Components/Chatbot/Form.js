@@ -13,26 +13,7 @@ import OnboardingProgress from './OnboardingProgress';
 
 
 const theme = {
- /* background: '#f5f8fb',
-  fontFamily: 'monospace',
-  headerBgColor: '#6e48aa',
-  headerFontColor: '#fff',
-  headerFontSize: '18px',
-  botBubbleColor: '#6E48AA',
-  botFontColor: '#fff',
-  userBubbleColor: '#fff',
-  userFontColor: '#4a4a4a'
-  background: 'linear-gradient(to bottom, #f5f8fb, #dfe4ea)', // Gradient background
-  fontFamily: 'Roboto, Arial, sans-serif', // Modern font
-  headerBgColor: '#6e48aa',
-  headerFontColor: '#fff',
-  headerFontSize: '24px', // Slightly larger header font size
-  botBubbleColor: '#6E48AA',
-  botFontColor: '#fff',
-  userBubbleColor: '#4a90e2', // Different user bubble color
-  userFontColor: '#fff',
-  borderRadius: '10px', // Rounded bubbles
-  boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)'*/
+
   background: '#e6f7ff',
   fontFamily: 'sans-serif',
   headerBgColor: '#ff9900',
