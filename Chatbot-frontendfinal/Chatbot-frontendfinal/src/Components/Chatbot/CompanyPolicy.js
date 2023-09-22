@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GetCompanyAnswer from '../ReactComponents/GetCompanyAnswer';
+
 import styles from './CompanyPolicy.module.css';
 
 class CompanyPolicy extends Component{

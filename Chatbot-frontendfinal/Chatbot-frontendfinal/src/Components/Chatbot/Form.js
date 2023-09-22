@@ -3,11 +3,13 @@ import ChatBot from 'react-simple-chatbot';
 import CompanyPolicy from './CompanyPolicy';
 import GetCompanyAnswer from '../ReactComponents/GetCompanyAnswer'
 import GetPersonalAnswer from '../ReactComponents/GetPersonalAnswer'
+
 //import emailjs from '@emailjs/browser';
 import  FAQs  from './FAQs';
 
 import { ThemeProvider } from 'styled-components';
 import EmailSender from './EmailSender';
+import OnboardingProgress from './OnboardingProgress';
 
 
 const theme = {
@@ -400,14 +402,13 @@ class Form extends Component {
           {
             id:'endapp',
             message:'Thank you for visiting Telstra ChatBot!Have a nice day!!',
-            trigger: ({val,steps})=>{
-              res.em+=JSON.stringify(steps['endapp'].message);
-              res.em+="\n";
-             console.log(res.em)
-              return 'end';
-            },
-            end:true
+            trigger:'onboard'
+            
           },
+          {id:'onboard',
+            meassage:'onbarding status',
+            component:<OnboardingProgress/>,
+            trigger:'survey'},
           {
             id:'Quitmsg',
             message:'Please select option to download or get the chat transcript as mail',
@@ -436,6 +437,34 @@ class Form extends Component {
             component:<GetCompanyAnswer/>, 
             trigger:'msg2'
           },
+          {
+            id: 'survey',
+            message: 'We would appreciate your feedback. Please answer the following questions:',
+            trigger: 'surveyLink',
+          },
+        
+          
+          {
+            id: 'surveyLink',
+            component: (
+              <div>
+                <p>
+                  Click
+                  <a
+                    href="https://forms.gle/EuEGX1RTJ7B4QBWCA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  ><pre><h1> here </h1></pre>
+                    
+                  </a>
+                  to provide feedback.
+                </p>
+              </div>
+            ),
+            end:true
+          }
+          
+          
           
 
         ]}
