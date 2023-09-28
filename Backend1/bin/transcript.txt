@@ -1,0 +1,12 @@
+Chatbot: "Hello, Welcome to Telstra ChatBot!"
+Chatbot: "What is your name?"
+User: ""
+Chatbot: Hi "" "Please provide Your Employee Id"
+Chatbot: "Thank you for providing Information!"
+Chatbot: "please select option to continue"
+User: Personal Info
+Chatbot: "Type your Question below"
+User: "who is my manager"
+
+Your Manager name is venkatesh 
+Chatbot: "Do you want to continue?"
