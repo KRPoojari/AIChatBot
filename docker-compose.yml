@@ -1,0 +1,32 @@
+version: '1'
+services:
+  backend:
+    image: thanushreeyadav/chatbotbackend
+    ports:
+      - "8081:8081"
+    depends_on:
+      - database
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/employee
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Telstra@18
+
+  frontend:
+    image: thanushreeyadav/chatbotfrontend
+      
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  database:
+    image: mysql:5.7
+    
+    environment:
+      MYSQL_ROOT_PASSWORD: Telstra@18
+      MYSQL_DATABASE: employee
+
+    ports:
+    - "3307:3306"
+    volumes:
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
