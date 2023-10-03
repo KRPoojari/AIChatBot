@@ -1,4 +1,4 @@
-<img src="https://github.com/KRPoojari/AIChatBot/assets/26119044/72f1d79c-4976-46f1-8e6d-925943afe1a8" width="50">
+<img src="https://github.com/KRPoojari/AIChatBot/assets/26119044/72f1d79c-4976-46f1-8e6d-925943afe1a8" width="75" align="middle">
 
 
 # AI-Driven Chatbot for Employee Onboarding
