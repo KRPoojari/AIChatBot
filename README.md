@@ -29,13 +29,13 @@ Follow these steps to set up and run the chatbot locally:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/chatbot.git
+   git clone https://github.com/KRPoojari/AIChatBot.git
    ```
 
 2. Navigate to the React.js frontend directory:
 
    ```bash
-   cd chatbot/frontend
+   cd AIChatBot/Frontend
    ```
 
 3. Install frontend dependencies:
@@ -57,7 +57,7 @@ Follow these steps to set up and run the chatbot locally:
 1. Navigate to the Spring Boot backend directory:
 
    ```bash
-   cd chatbot/backend
+   cd AIChatBot/Backend
    ```
 
 2. Configure the MySQL database connection in the `application.properties` file.
